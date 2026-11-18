@@ -1,0 +1,17 @@
+name: Git Wrapped
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/dev-wrapped.yml']
+permissions:
+  contents: write
+jobs:
+  card:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Curtis-sama/dev-wrapped@v1
+        with:
+          timezone: Europe/Paris
